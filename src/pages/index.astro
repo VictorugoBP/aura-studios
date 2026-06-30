@@ -9,13 +9,57 @@ const whatsapp =
   encodeURIComponent("Olá! Quero materializar meu lançamento com a Aura Studios.");
 
 // Demonstração — pilha em perspectiva 3D (referência: drewkirsch.com).
-// Cada peça é uma parte do empreendimento materializada em cinema.
+// Cada peça é um empreendimento materializado em cinema, com título e descrição.
 const stack = [
-  { src: "/videos/product.mp4", poster: "/videos/product.jpg", titulo: "Fachada & implantação", categoria: "Residencial de alto padrão" },
-  { src: "/videos/work-3.mp4", poster: "/videos/work-3.jpg", titulo: "Decorado & lifestyle", categoria: "Interior" },
-  { src: "/videos/work-1.mp4", poster: "/videos/work-1.jpg", titulo: "Vista & localização", categoria: "Empreendimento litorâneo" },
-  { src: "/videos/work-4.mp4", poster: "/videos/work-4.jpg", titulo: "Implantação & masterplan", categoria: "Loteamento" },
-  { src: "/videos/work-2.mp4", poster: "/videos/work-2.jpg", titulo: "Escala & entorno", categoria: "Lançamento urbano" },
+  {
+    src: "/videos/casa.mp4",
+    poster: "/videos/casa.jpg",
+    titulo: "Do terreno à chave. Antes da obra existir.",
+    descricao:
+      "Da terra batida ao morar pronto — fundação, estrutura e acabamento de alto padrão, comprimidos em segundos. O comprador atravessa a obra inteira sem esperar um dia de canteiro.",
+  },
+  {
+    src: "/videos/loteamento.mp4",
+    poster: "/videos/loteamento.jpg",
+    titulo: "O masterplan inteiro. Visto do alto, antes de existir.",
+    descricao:
+      "Do terreno em obra à orla pronta — dezenas de unidades, área de lazer e praia particular numa única tomada aérea, fechando dentro de uma villa de frente pro mar. O investidor sobrevoa o empreendimento finalizado com o canteiro ainda vazio.",
+  },
+  {
+    src: "/videos/torre.mp4",
+    poster: "/videos/torre.jpg",
+    titulo: "Da fundação ao apartamento decorado. Sem obra.",
+    descricao:
+      "A torre sobe, se abre e revela cada unidade por dentro — até a cozinha onde o comprador vai morar. Fachada, planta e decorado na mesma cena, antes da primeira laje.",
+  },
+  {
+    src: "/videos/fpv.mp4",
+    poster: "/videos/fpv.jpg",
+    titulo: "A tomada mais difícil do mercado. Sem drone, sem risco.",
+    descricao:
+      "Da sala com vista pro mar ao reveal aéreo da casa inteira, num movimento único e contínuo. O que levaria um piloto FPV e vários takes, a Aura entrega pronto — produção de cinema na apresentação do seu imóvel.",
+  },
+  {
+    src: "/videos/decor.mp4",
+    poster: "/videos/decor.jpg",
+    titulo: "O espaço vazio se mobília sozinho.",
+    descricao:
+      "Cozinha, ilha e ambientes surgem no imóvel cru — o comprador vê a casca virar o lar onde vai morar, sem decorado físico nem stand de vendas.",
+  },
+  {
+    src: "/videos/lote-urbano.mp4",
+    poster: "/videos/lote-urbano.jpg",
+    titulo: "De “vende-se” a empreendimento. Em segundos.",
+    descricao:
+      "A metragem e a posição do lote no coração da cidade, destacadas em tempo real, até a obra começar. O investidor vê o que cabe ali antes de comprar.",
+  },
+  {
+    src: "/videos/timelapse.mp4",
+    poster: "/videos/timelapse.jpg",
+    titulo: "A obra inteira em segundos.",
+    descricao:
+      "Do canteiro vazio à estrutura erguida ao pôr do sol, o tempo da construção comprimido numa só passagem. O cliente vê o empreendimento ganhar forma sem esperar o cronograma.",
+  },
 ];
 ---
 
@@ -215,13 +259,13 @@ const stack = [
           {stack.map((item) => (
             <a href={whatsapp} target="_blank" rel="noopener" class="panel">
               <div class="panel__inner">
-                <video class="js-inview" muted loop playsinline preload="none" poster={item.poster}>
+                <video class="js-reel" muted loop playsinline preload="none" poster={item.poster}>
                   <source src={item.src} type="video/mp4" />
                 </video>
                 <span class="panel__scrim"></span>
                 <figcaption class="panel__cap">
-                  <span class="panel__cat">{item.categoria}</span>
                   <span class="panel__title">{item.titulo}</span>
+                  <span class="panel__desc">{item.descricao}</span>
                 </figcaption>
               </div>
             </a>
@@ -758,28 +802,29 @@ const stack = [
     flex-direction: column;
     gap: 0.4rem;
   }
-  .panel__cat {
-    font-family: var(--font-sub);
-    font-weight: 600;
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ciano);
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-  }
   .panel__title {
     font-family: var(--font-titulo);
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: -0.015em;
-    line-height: 0.96;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
     color: #fff;
-    font-size: clamp(2rem, 4.5vw, 4rem);
+    font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+    max-width: 22ch;
     transform: translateY(14px);
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .panel__desc {
+    font-family: var(--font-corpo);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    font-size: clamp(0.9rem, 1.05vw, 1.02rem);
+    max-width: 56ch;
+    margin-top: 0.7rem;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.55s ease 0.05s, transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) 0.05s;
   }
   .panel:hover video,
   .panel:focus-visible video {
@@ -789,10 +834,10 @@ const stack = [
   .panel:focus-visible .panel__scrim {
     opacity: 1;
   }
-  .panel:hover .panel__cat,
   .panel:hover .panel__title,
-  .panel:focus-visible .panel__cat,
-  .panel:focus-visible .panel__title {
+  .panel:hover .panel__desc,
+  .panel:focus-visible .panel__title,
+  .panel:focus-visible .panel__desc {
     opacity: 1;
     transform: none;
   }
@@ -914,8 +959,8 @@ const stack = [
     .panel__scrim {
       opacity: 1;
     }
-    .panel__cat,
-    .panel__title {
+    .panel__title,
+    .panel__desc {
       opacity: 1;
       transform: none;
     }
@@ -973,8 +1018,8 @@ const stack = [
     .panel:hover video {
       transform: none;
     }
-    .panel__cat,
-    .panel__title {
+    .panel__title,
+    .panel__desc {
       opacity: 1;
       transform: none;
     }
@@ -1025,52 +1070,44 @@ const stack = [
     revealEls.forEach((el) => el.classList.add("is-in"));
   }
 
-  // Vídeos: tocam só quando visíveis (economiza CPU/banda)
-  const vids = document.querySelectorAll<HTMLVideoElement>("video.js-inview");
-  if ("IntersectionObserver" in window) {
-    const vio = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          const v = e.target as HTMLVideoElement;
-          if (e.isIntersecting) {
-            if (v.preload === "none") v.preload = "auto";
-            v.play().catch(() => {});
-          } else {
-            v.pause();
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-    vids.forEach((v) => vio.observe(v));
-  }
-
-  // Pilha em perspectiva (ref. drewkirsch.com): painéis encavalados que inclinam
-  // (rotateX) conforme a distância do centro da tela, se endireitam ao passar pelo
-  // meio e "saltam" à frente (escala + z-index + brilho).
+  // Reel — pilha em perspectiva (ref. drewkirsch.com). Cada painel inclina (rotateX)
+  // conforme a distância do centro da tela, se endireita ao passar pelo meio e
+  // "salta" à frente (escala + z-index + brilho). Para economizar CPU/banda com
+  // vários vídeos, só os painéis mais centralizados tocam; os demais pausam.
   const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const stackEl = document.getElementById("stack");
-  if (stackEl && !calm) {
+  if (stackEl) {
     const panels = Array.from(stackEl.querySelectorAll<HTMLElement>(".panel"));
     const MAX = 16; // graus de inclinação máxima
     let ticking = false;
 
     const apply = () => {
       ticking = false;
-      const vc = window.innerHeight / 2;
+      const vh = window.innerHeight;
+      const vc = vh / 2;
       for (const p of panels) {
         const r = p.getBoundingClientRect();
-        if (r.bottom < -300 || r.top > window.innerHeight + 300) continue;
-        const center = r.top + r.height / 2;
-        let rel = (center - vc) / (window.innerHeight / 2); // -1 topo, +1 base
+        const onscreen = r.bottom > -200 && r.top < vh + 200;
+        let rel = (r.top + r.height / 2 - vc) / (vh / 2); // -1 topo, +1 base
         rel = Math.max(-1.3, Math.min(1.3, rel));
         const k = Math.min(Math.abs(rel), 1);
-        const rot = (-rel * MAX).toFixed(2);
-        const scale = (1 - k * 0.12).toFixed(3); // centro maior, distantes menores
-        const bright = (1 - k * 0.5).toFixed(3); // distantes escurecem
-        p.style.transform = `rotateX(${rot}deg) scale(${scale})`;
-        p.style.filter = `brightness(${bright})`;
-        p.style.zIndex = String(100 - Math.round(k * 60));
+
+        // 3D só quando movimento é permitido
+        if (!calm) {
+          p.style.transform = `rotateX(${(-rel * MAX).toFixed(2)}deg) scale(${(1 - k * 0.12).toFixed(3)})`;
+          p.style.filter = `brightness(${(1 - k * 0.5).toFixed(3)})`;
+          p.style.zIndex = String(100 - Math.round(k * 60));
+        }
+
+        // Toca só o(s) painel(éis) perto do centro; pausa o resto
+        const v = p.querySelector<HTMLVideoElement>("video.js-reel");
+        if (!v) continue;
+        if (onscreen && Math.abs(rel) < 0.6) {
+          if (v.preload === "none") v.preload = "auto";
+          if (v.paused) v.play().catch(() => {});
+        } else if (!v.paused) {
+          v.pause();
+        }
       }
     };
     const onScrollStack = () => {
