@@ -1,0 +1,1299 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Trabalho selecionado — peças anônimas: "mesmo sem o logo, a assinatura está lá".
+// Pilha em perspectiva 3D (referência: drewkirsch.com): painéis largos empilhados
+// que inclinam no scroll (rotateX) e se endireitam ao passar pelo centro da tela.
+const stack = [
+  { src: "/videos/product.mp4", poster: "/videos/product.jpg", titulo: "Residência à beira-lago", categoria: "Filme de Posicionamento" },
+  { src: "/videos/work-3.mp4", poster: "/videos/work-3.jpg", titulo: "Interior cru", categoria: "Alto padrão" },
+  { src: "/videos/work-1.mp4", poster: "/videos/work-1.jpg", titulo: "Orla", categoria: "Incorporadora litorânea" },
+  { src: "/videos/work-4.mp4", poster: "/videos/work-4.jpg", titulo: "Masterplan", categoria: "Loteadora" },
+  { src: "/videos/work-2.mp4", poster: "/videos/work-2.jpg", titulo: "2.000 m²", categoria: "Lançamento urbano" },
+];
+---
+
+<Layout>
+  <!-- Grão de película — assinatura da marca, sutil sobre tudo -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ───────────────────────── NAV ───────────────────────── -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="brand" href="#topo" aria-label="Aura Studios — início">
+        <span class="brand__mark">AURA<span class="brand__dot">.</span></span>
+        <span class="brand__sub">STUDIOS</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegação principal">
+        <a href="#trabalho">Trabalho</a>
+        <a href="#processo">O Estúdio</a>
+        <a href="#tese">Manifesto</a>
+        <a href="#contato" class="btn btn--primary nav__cta">Falar com a Aura</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ───────────────────── 1 · HERO ───────────────────── -->
+    <section class="hero" id="topo">
+      <div class="hero__media">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/videos/hero.jpg"
+        >
+          <source src="/videos/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__veil"></div>
+      </div>
+
+      <!-- Gradiente Aura: só nas áreas livres, nunca atrás do texto -->
+      <div class="aura aura--tr" aria-hidden="true"></div>
+      <div class="aura aura--bl" aria-hidden="true"></div>
+
+      <div class="hero__content container">
+        <p class="eyebrow reveal">Produção audiovisual de alto padrão</p>
+        <h1 class="hero__title reveal">
+          Criamos vídeos impossíveis de gravar,<br />
+          <span class="grad-text">mas possíveis de vender.</span>
+        </h1>
+        <p class="hero__lead reveal">
+          Cinema sem set, sem locação, sem limite físico. Direção, luz e acabamento
+          de película — para a sua marca parecer à frente antes mesmo de vender.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#produto" class="btn btn--primary">Ver o que é possível</a>
+          <a href="#tese" class="scrollcue">
+            <span>role para baixo</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────── 2 · A TESE ───────────────────── -->
+    <section class="tese" id="tese">
+      <div class="container tese__inner">
+        <p class="tese__line reveal">
+          Num mercado onde quase todo conteúdo grita que é sintético,
+          <span class="grad-text">a Aura faz o cliente esquecer que há tecnologia.</span>
+        </p>
+        <p class="tese__sub reveal">
+          A vantagem fica nos bastidores. A percepção premium fica na vitrine.
+        </p>
+      </div>
+    </section>
+
+    <!-- ───────────── 3 · PRODUTO PRINCIPAL ───────────── -->
+    <section class="produto" id="produto">
+      <div class="container">
+        <div class="produto__head">
+          <div class="reveal">
+            <p class="eyebrow">O produto principal</p>
+            <h2 class="h2">Filme de Posicionamento</h2>
+            <p class="lead">
+              O vídeo institucional que faz uma empresa de alto padrão parecer
+              exatamente isso. Cenas que não existem, capturadas como se uma câmera
+              de cinema cara tivesse estado lá.
+            </p>
+          </div>
+        </div>
+
+        <div class="produto__grid">
+          <figure class="produto__still reveal">
+            <video class="js-inview" muted loop playsinline preload="none" poster="/videos/product.jpg">
+              <source src="/videos/product.mp4" type="video/mp4" />
+            </video>
+            <span class="produto__still-tag">Still de cena · golden hour</span>
+          </figure>
+
+          <ul class="cards">
+            <li class="card reveal">
+              <h3 class="card__title">Atmosfera de cinema</h3>
+              <p class="card__text">
+                Golden hour, luz lateral, pretos profundos, grão de película.
+                Não parece feito por máquina porque o ofício é esconder a máquina.
+              </p>
+            </li>
+            <li class="card reveal">
+              <h3 class="card__title">Realidade sob medida</h3>
+              <p class="card__text">
+                O ângulo impossível, a escala que impressiona, o lugar que ainda
+                não existe. Do conceito ao frame final.
+              </p>
+            </li>
+            <li class="card reveal">
+              <h3 class="card__title">Acabamento de vitrine</h3>
+              <p class="card__text">
+                Color grading autoral, legenda limpa em camada de pós, entrega
+                pronta para site, social e apresentação comercial.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="produto__cta reveal">
+          <a href="#contato" class="btn btn--primary">Quero um filme assim</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── 4 · COMO A AURA TRABALHA ───────────── -->
+    <section class="processo" id="processo">
+      <div class="container">
+        <p class="eyebrow reveal">Como a Aura trabalha</p>
+        <h2 class="h2 reveal">Você recebe a peça, não o processo.</h2>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num">01</span>
+            <span class="step__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="step__title">Direção</h3>
+            <p class="step__text">
+              Entendemos o que precisa vender percepção. Definimos a cena, a luz e
+              o tom antes de qualquer frame.
+            </p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">02</span>
+            <span class="step__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.5"/><path d="M12 3.8 15.6 10M20.2 12l-7.2.2M12 20.2 8.4 14M3.8 12l7.2-.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+            <h3 class="step__title">Produção</h3>
+            <p class="step__text">
+              Construímos cada imagem com fotorrealismo de película. Assimetria,
+              profundidade de campo, imperfeição ótica intencional.
+            </p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num">03</span>
+            <span class="step__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 8h14M5 16h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="8" r="2.2" fill="#0a0a0a" stroke="currentColor" stroke-width="1.5"/><circle cx="15" cy="16" r="2.2" fill="#0a0a0a" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
+            <h3 class="step__title">Acabamento</h3>
+            <p class="step__text">
+              Color grading, ritmo e finalização em cinema. Você recebe a peça
+              pronta, sem ver os bastidores.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────────── 5 · PARA QUEM ───────────── -->
+    <section class="paraquem" id="paraquem">
+      <div class="container">
+        <p class="eyebrow reveal">Para quem</p>
+        <div class="paraquem__grid">
+          <article class="fit fit--in reveal">
+            <span class="fit__tag fit__tag--in">É pra você se</span>
+            <p class="fit__text">
+              Você é assessoria de investimentos, incorporadora ou marca de luxo.
+              Precisa parecer mais valioso antes mesmo de vender. Seu medo é
+              entregar material que pareça barato ou amador.
+            </p>
+          </article>
+          <article class="fit fit--out reveal">
+            <span class="fit__tag fit__tag--out">Não é pra você se</span>
+            <p class="fit__text">
+              Você mede valor por quantidade de peças, compara por preço e não
+              enxerga a diferença entre cinema e conteúdo descartável. O padrão
+              premium não cabe em produção descartável.
+            </p>
+          </article>
+        </div>
+        <p class="paraquem__pergunta reveal">
+          Todo conteúdo da Aura passa por uma só pergunta:
+          <span class="grad-text">isso vende percepção de valor?</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ───────────── 6 · TRABALHO / PROVA ───────────── -->
+    <section class="trabalho" id="trabalho">
+      <div class="container">
+        <div class="trabalho__head">
+          <div class="reveal">
+            <p class="eyebrow">Trabalho selecionado</p>
+            <h2 class="h2">A peça fala antes do logo.</h2>
+          </div>
+          <p class="trabalho__note reveal">
+            Cada peça parece um still de filme caro, não um frame sintético.
+            Mesmo sem o logo, a assinatura está lá.
+          </p>
+        </div>
+
+        <div class="stack" id="stack">
+          {stack.map((item) => (
+            <a href="#contato" class="panel">
+              <div class="panel__inner">
+                <video class="js-inview" muted loop playsinline preload="none" poster={item.poster}>
+                  <source src={item.src} type="video/mp4" />
+                </video>
+                <span class="panel__scrim"></span>
+                <figcaption class="panel__cap">
+                  <span class="panel__cat">{item.categoria}</span>
+                  <span class="panel__title">{item.titulo}</span>
+                </figcaption>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="trabalho__cta reveal">
+          <a href="#contato" class="link-arrow">
+            Ver o portfólio completo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── 7 · O DIFERENCIAL ───────────── -->
+    <section class="diferencial" id="diferencial">
+      <div class="container">
+        <p class="eyebrow reveal">O diferencial · máquina contra ofício</p>
+        <div class="vs">
+          <article class="vs__side vs__side--mkt reveal">
+            <span class="vs__label">O mercado entrega</span>
+            <p class="vs__text">
+              Conteúdo rápido e visivelmente sintético. Pele de cera, simetria
+              estranha, origem à mostra em cada frame.
+            </p>
+          </article>
+          <span class="vs__divider" aria-hidden="true">vs</span>
+          <article class="vs__side vs__side--aura reveal">
+            <span class="vs__label">A Aura entrega</span>
+            <p class="vs__text">
+              Mesmo ferramental, jogo invertido. Direção de cinema, color grading
+              e imperfeições óticas que fazem a imagem parecer capturada por uma
+              câmera real e cara.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── 8 · CTA FINAL ───────────── -->
+    <section class="cta" id="contato">
+      <div class="cta__bg" aria-hidden="true"></div>
+      <div class="container cta__inner">
+        <h2 class="cta__title reveal">Sua marca merece parecer impossível.</h2>
+        <p class="cta__sub reveal">Vamos transformar percepção em posicionamento.</p>
+        <a href="mailto:contato@aurastudios.com" class="btn btn--xl reveal">Falar com a Aura</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────────────────────── RODAPÉ ───────────────────────── -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark">AURA<span class="brand__dot">.</span></span>
+        <span class="brand__sub">STUDIOS</span>
+      </div>
+      <p class="footer__tag">Produção audiovisual de alto padrão · 2026</p>
+      <nav class="footer__nav" aria-label="Rodapé">
+        <a href="#trabalho">Trabalho</a>
+        <a href="#tese">Manifesto</a>
+        <a href="#contato">Contato</a>
+        <a href="https://instagram.com/aurastudios" target="_blank" rel="noopener">@aurastudios</a>
+      </nav>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* ════════════ PRIMITIVAS ════════════ */
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ciano);
+    margin-bottom: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.6rem;
+    height: 1px;
+    background: var(--ciano);
+    opacity: 0.7;
+  }
+
+  .h2 {
+    font-family: var(--font-titulo);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    color: var(--ink);
+  }
+
+  .lead {
+    font-family: var(--font-corpo);
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin-top: 1.4rem;
+  }
+
+  .grad-text {
+    background: var(--gradiente-aura);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ── Botões ── */
+  .btn {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    white-space: nowrap;
+  }
+  .btn--primary {
+    background: var(--azul);
+    color: #fff;
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+  }
+  .btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 38px -10px rgba(37, 99, 235, 0.75);
+  }
+  .btn--xl {
+    font-size: 1.05rem;
+    padding: 1.2rem 2.4rem;
+    background: #fff;
+    color: var(--preto);
+  }
+  .btn--xl:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 50px -12px rgba(255, 255, 255, 0.5);
+  }
+
+  .link-arrow {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 0.35rem;
+    transition: gap 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  .link-arrow:hover {
+    gap: 1rem;
+    color: var(--ciano);
+    border-color: var(--ciano);
+  }
+
+  /* ── Grão de película ── */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Gradiente Aura (emanações de luz) ── */
+  .aura {
+    position: absolute;
+    width: 60vw;
+    max-width: 720px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .aura--tr {
+    top: -18%;
+    right: -14%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.9), transparent 62%);
+  }
+  .aura--bl {
+    bottom: -22%;
+    left: -16%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.7), transparent 62%);
+  }
+
+  /* ════════════ NAV ════════════ */
+  .nav {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+  .nav.is-scrolled {
+    background: rgba(10, 10, 10, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom-color: var(--line);
+  }
+  .nav__inner {
+    max-width: var(--container);
+    margin-inline: auto;
+    padding: 1.05rem var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    line-height: 1;
+  }
+  .brand__mark {
+    font-family: var(--font-titulo);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    font-size: 1.18rem;
+    color: #fff;
+  }
+  .brand__dot {
+    color: var(--ciano);
+  }
+  .brand__sub {
+    font-family: var(--font-sub);
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    font-size: 0.62rem;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav__links a:not(.btn) {
+    font-family: var(--font-sub);
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    transition: color 0.2s ease;
+  }
+  .nav__links a:not(.btn):hover {
+    color: #fff;
+  }
+  .nav__cta {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.88rem;
+  }
+
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: 0;
+    padding: 8px;
+    cursor: pointer;
+  }
+  .nav__toggle span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* ════════════ HERO ════════════ */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: clamp(3.5rem, 9vh, 7rem);
+  }
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(10, 10, 10, 0.96) 0%,
+        rgba(10, 10, 10, 0.55) 38%,
+        rgba(10, 10, 10, 0.3) 70%,
+        rgba(10, 10, 10, 0.6) 100%
+      );
+  }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+  }
+  .hero__title {
+    font-family: var(--font-titulo);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    font-size: clamp(2.4rem, 6.4vw, 5.4rem);
+    color: #fff;
+    max-width: 16ch;
+  }
+  .hero__lead {
+    margin-top: 1.6rem;
+    max-width: 52ch;
+    font-size: clamp(1.02rem, 1.5vw, 1.25rem);
+    color: var(--ink-soft);
+  }
+  .hero__actions {
+    margin-top: 2.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .scrollcue {
+    font-family: var(--font-sub);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-mute);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .scrollcue svg {
+    animation: bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  /* ════════════ TESE ════════════ */
+  .tese {
+    padding: clamp(6rem, 16vw, 12rem) 0;
+    text-align: center;
+    position: relative;
+  }
+  .tese__inner {
+    max-width: 980px;
+  }
+  .tese__line {
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+    font-size: clamp(1.7rem, 4.2vw, 3.1rem);
+    color: var(--ink);
+  }
+  .tese__sub {
+    margin-top: 2rem;
+    font-family: var(--font-sub);
+    font-weight: 500;
+    color: var(--ink-mute);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+  }
+
+  /* ════════════ PRODUTO ════════════ */
+  .produto {
+    padding: var(--section-y) 0;
+    border-top: 1px solid var(--line);
+  }
+  .produto__head {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .produto__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: stretch;
+  }
+  .produto__still {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    min-height: 340px;
+  }
+  .produto__still video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .produto__still-tag {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    font-family: var(--font-sub);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: rgba(10, 10, 10, 0.55);
+    backdrop-filter: blur(6px);
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+  .cards {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: clamp(1.3rem, 2.4vw, 1.8rem);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-3px);
+  }
+  .card__title {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 0.55rem;
+  }
+  .card__text {
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+  }
+  .produto__cta {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  /* ════════════ PROCESSO ════════════ */
+  .processo {
+    padding: var(--section-y) 0;
+    border-top: 1px solid var(--line);
+  }
+  .processo .h2 {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    max-width: 18ch;
+  }
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .step {
+    border-top: 1px solid var(--line-strong);
+    padding-top: 1.6rem;
+  }
+  .step__num {
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ciano);
+    letter-spacing: 0.1em;
+  }
+  .step__ico {
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin: 1.4rem 0 1rem;
+    color: var(--ciano);
+  }
+  .step__ico svg {
+    width: 100%;
+    height: 100%;
+  }
+  .step__title {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+  .step__text {
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    max-width: 34ch;
+  }
+
+  /* ════════════ PARA QUEM ════════════ */
+  .paraquem {
+    padding: var(--section-y) 0;
+    border-top: 1px solid var(--line);
+  }
+  .paraquem__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+  }
+  .fit {
+    border-radius: 16px;
+    padding: clamp(1.8rem, 3vw, 2.6rem);
+    border: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .fit--in {
+    background: linear-gradient(180deg, rgba(6, 182, 212, 0.07), rgba(37, 99, 235, 0.04));
+    border-color: rgba(6, 182, 212, 0.28);
+  }
+  .fit__tag {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.1rem;
+  }
+  .fit__tag::before {
+    font-size: 1rem;
+  }
+  .fit__tag--in {
+    color: var(--ciano);
+  }
+  .fit__tag--in::before {
+    content: "✓";
+  }
+  .fit__tag--out {
+    color: var(--ink-mute);
+  }
+  .fit__tag--out::before {
+    content: "✕";
+  }
+  .fit__text {
+    color: var(--ink-soft);
+    font-size: 1.02rem;
+  }
+  .fit--out .fit__text {
+    color: var(--ink-mute);
+  }
+  .paraquem__pergunta {
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--ink);
+    text-align: center;
+    max-width: 24ch;
+    margin-inline: auto;
+  }
+
+  /* ════════════ TRABALHO ════════════ */
+  .trabalho {
+    padding: var(--section-y) 0;
+    border-top: 1px solid var(--line);
+  }
+  .trabalho__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    flex-wrap: wrap;
+  }
+  .trabalho__note {
+    max-width: 38ch;
+    color: var(--ink-mute);
+    font-size: 0.98rem;
+  }
+  /* ── Pilha em perspectiva 3D (referência drewkirsch.com) ── */
+  .stack {
+    position: relative;
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  .panel {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    /* transform (rotateX/scale) e filter (brilho) são aplicados pelo scroll via JS,
+       sem transition, para acompanhar a rolagem sem atraso */
+    will-change: transform, filter;
+  }
+  /* Encavalamento: cada painel sobe sobre o anterior; o painel ativo (centro)
+     ganha escala e z-index pelo JS e "salta" à frente — leque elegante. */
+  .panel + .panel {
+    margin-top: clamp(-9rem, -11vw, -4.5rem);
+  }
+  .panel__inner {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: 0 50px 90px -50px rgba(0, 0, 0, 0.9);
+  }
+  .panel video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .panel__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 2%, transparent 42%);
+    opacity: 0.4;
+    transition: opacity 0.5s ease;
+  }
+  .panel__cap {
+    position: absolute;
+    left: clamp(1.2rem, 3vw, 2.6rem);
+    right: 1.2rem;
+    bottom: clamp(1.2rem, 3vw, 2.2rem);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .panel__cat {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ciano);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .panel__title {
+    font-family: var(--font-titulo);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.015em;
+    line-height: 0.96;
+    color: #fff;
+    font-size: clamp(2rem, 4.5vw, 4rem);
+    transform: translateY(14px);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .panel:hover video,
+  .panel:focus-visible video {
+    transform: scale(1.04);
+  }
+  .panel:hover .panel__scrim,
+  .panel:focus-visible .panel__scrim {
+    opacity: 1;
+  }
+  .panel:hover .panel__cat,
+  .panel:hover .panel__title,
+  .panel:focus-visible .panel__cat,
+  .panel:focus-visible .panel__title {
+    opacity: 1;
+    transform: none;
+  }
+  .panel:focus-visible {
+    outline: 2px solid var(--ciano);
+    outline-offset: 4px;
+  }
+
+  .trabalho__cta {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    text-align: center;
+  }
+
+  /* ════════════ DIFERENCIAL ════════════ */
+  .diferencial {
+    padding: var(--section-y) 0;
+    border-top: 1px solid var(--line);
+  }
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    align-items: center;
+  }
+  .vs__side {
+    border-radius: 16px;
+    padding: clamp(1.8rem, 3vw, 2.8rem);
+    border: 1px solid var(--line);
+    min-height: 100%;
+  }
+  .vs__side--mkt {
+    background: var(--surface);
+    filter: saturate(0.4);
+  }
+  .vs__side--aura {
+    position: relative;
+    background: linear-gradient(180deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.06));
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: 0 0 60px -20px rgba(37, 99, 235, 0.5);
+  }
+  .vs__label {
+    font-family: var(--font-sub);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .vs__side--mkt .vs__label {
+    color: var(--ink-mute);
+  }
+  .vs__side--aura .vs__label {
+    color: var(--ciano);
+  }
+  .vs__text {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+  .vs__side--mkt .vs__text {
+    color: var(--ink-mute);
+  }
+  .vs__divider {
+    font-family: var(--font-titulo);
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ════════════ CTA FINAL ════════════ */
+  .cta {
+    position: relative;
+    padding: clamp(6rem, 14vw, 11rem) 0;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cta__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--gradiente-aura);
+    opacity: 0.92;
+  }
+  .cta__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(10, 10, 10, 0.55), transparent 60%);
+  }
+  .cta__inner {
+    position: relative;
+    z-index: 2;
+  }
+  .cta__title {
+    font-family: var(--font-titulo);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-size: clamp(2.1rem, 6vw, 4.4rem);
+    color: #fff;
+    max-width: 18ch;
+    margin-inline: auto;
+  }
+  .cta__sub {
+    margin: 1.4rem auto 2.6rem;
+    font-family: var(--font-sub);
+    font-weight: 500;
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 34ch;
+  }
+
+  /* ════════════ RODAPÉ ════════════ */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: clamp(2.5rem, 5vw, 4rem) 0;
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .footer__brand {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    opacity: 0.55;
+  }
+  .footer__tag {
+    font-size: 0.85rem;
+    color: var(--ink-mute);
+  }
+  .footer__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+  }
+  .footer__nav a {
+    font-family: var(--font-sub);
+    font-size: 0.88rem;
+    color: var(--ink-mute);
+    transition: color 0.2s ease;
+  }
+  .footer__nav a:hover {
+    color: var(--ciano);
+  }
+
+  /* ════════════ REVEAL ════════════ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ════════════ RESPONSIVO ════════════ */
+  @media (max-width: 920px) {
+    .produto__grid {
+      grid-template-columns: 1fr;
+    }
+    .steps {
+      grid-template-columns: 1fr;
+    }
+    .vs {
+      grid-template-columns: 1fr;
+    }
+    .vs__divider {
+      justify-self: center;
+    }
+    .panel {
+      aspect-ratio: 16 / 11;
+    }
+    .panel + .panel {
+      margin-top: clamp(-6rem, -9vw, -3rem);
+    }
+  }
+
+  /* Touch / sem hover: legenda sempre visível */
+  @media (hover: none) {
+    .panel__scrim {
+      opacity: 1;
+    }
+    .panel__cat,
+    .panel__title {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .nav__links {
+      position: fixed;
+      inset: 0 0 0 auto;
+      width: min(78vw, 320px);
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.6rem;
+      padding: 2rem var(--gutter);
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(18px);
+      border-left: 1px solid var(--line);
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .nav__links.is-open {
+      transform: translateX(0);
+    }
+    .nav__toggle {
+      display: flex;
+      z-index: 60;
+    }
+    .paraquem__grid {
+      grid-template-columns: 1fr;
+    }
+    .trabalho__head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .scrollcue svg {
+      animation: none;
+    }
+    .panel {
+      transform: none !important;
+      filter: none !important;
+    }
+    /* sem 3D, painéis não podem se sobrepor: vira lista empilhada simples */
+    .panel + .panel {
+      margin-top: clamp(1.4rem, 3.5vw, 3rem);
+    }
+    .panel:hover video {
+      transform: none;
+    }
+    .panel__cat,
+    .panel__title {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // Nav: estado "scrolled" + menu mobile
+  const nav = document.getElementById("nav");
+  const toggle = document.getElementById("navToggle");
+  const links = document.querySelector<HTMLElement>(".nav__links");
+
+  const onScroll = () => {
+    if (window.scrollY > 24) nav?.classList.add("is-scrolled");
+    else nav?.classList.remove("is-scrolled");
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  toggle?.addEventListener("click", () => {
+    const open = links?.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(!!open));
+    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  });
+  links?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      links.classList.remove("is-open");
+      toggle?.setAttribute("aria-expanded", "false");
+    })
+  );
+
+  // Reveal no scroll
+  const revealEls = document.querySelectorAll<HTMLElement>(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-in"));
+  }
+
+  // Vídeos: tocam só quando visíveis (economiza CPU/banda)
+  const vids = document.querySelectorAll<HTMLVideoElement>("video.js-inview");
+  if ("IntersectionObserver" in window) {
+    const vio = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          const v = e.target as HTMLVideoElement;
+          if (e.isIntersecting) {
+            if (v.preload === "none") v.preload = "auto";
+            v.play().catch(() => {});
+          } else {
+            v.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    vids.forEach((v) => vio.observe(v));
+  }
+
+  // Pilha em perspectiva (ref. drewkirsch.com): painéis encavalados que inclinam
+  // (rotateX) conforme a distância do centro da tela, se endireitam ao passar pelo
+  // meio e "saltam" à frente (escala + z-index + brilho).
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const stackEl = document.getElementById("stack");
+  if (stackEl && !calm) {
+    const panels = Array.from(stackEl.querySelectorAll<HTMLElement>(".panel"));
+    const MAX = 16; // graus de inclinação máxima
+    let ticking = false;
+
+    const apply = () => {
+      ticking = false;
+      const vc = window.innerHeight / 2;
+      for (const p of panels) {
+        const r = p.getBoundingClientRect();
+        if (r.bottom < -300 || r.top > window.innerHeight + 300) continue;
+        const center = r.top + r.height / 2;
+        let rel = (center - vc) / (window.innerHeight / 2); // -1 topo, +1 base
+        rel = Math.max(-1.3, Math.min(1.3, rel));
+        const k = Math.min(Math.abs(rel), 1);
+        const rot = (-rel * MAX).toFixed(2);
+        const scale = (1 - k * 0.12).toFixed(3); // centro maior, distantes menores
+        const bright = (1 - k * 0.5).toFixed(3); // distantes escurecem
+        p.style.transform = `rotateX(${rot}deg) scale(${scale})`;
+        p.style.filter = `brightness(${bright})`;
+        p.style.zIndex = String(100 - Math.round(k * 60));
+      }
+    };
+    const onScrollStack = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(apply);
+      }
+    };
+
+    apply();
+    window.addEventListener("scroll", onScrollStack, { passive: true });
+    window.addEventListener("resize", onScrollStack, { passive: true });
+  }
+</script>

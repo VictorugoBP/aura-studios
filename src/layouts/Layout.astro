@@ -1,0 +1,51 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Aura Studios — Produção audiovisual de alto padrão",
+  description = "Criamos vídeos impossíveis de gravar, mas possíveis de vender. Cinema sem set, sem locação, sem limite físico — direção, luz e acabamento de película para a sua marca parecer à frente antes mesmo de vender.",
+} = Astro.props;
+
+// Só emite canonical absoluto quando `site` estiver definido no astro.config.
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site)
+  : undefined;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/videos/hero.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Tipografia da marca: Sora · Poppins · Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Poppins:wght@500;600&family=Inter:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,111 @@
+/* Reset mínimo — base responsiva e compatível, sem framework.
+   Estilos específicos de cada landing page entram depois. */
+
+/* ── DNA Aura Studios — tokens de marca ─────────────────────────────
+   Paleta, tipografia e gradiente conforme manual de identidade v1.0.  */
+:root {
+  /* Cores principais (luz de cor sobre escuridão) */
+  --roxo: #7c3aed;
+  --azul: #2563eb;
+  --ciano: #06b6d4;
+
+  /* Neutros */
+  --preto: #0a0a0a;
+  --grafite: #1f2937;
+  --branco: #ffffff;
+
+  /* Superfícies derivadas do preto profundo */
+  --surface: #0e0f12;
+  --surface-2: #15171c;
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  /* Texto — corpo em branco a ~80% para não brilhar demais */
+  --ink: #ffffff;
+  --ink-soft: rgba(255, 255, 255, 0.78);
+  --ink-mute: rgba(255, 255, 255, 0.52);
+  --ink-faint: rgba(255, 255, 255, 0.34);
+
+  /* Gradiente Aura — 135°, roxo → azul → ciano */
+  --gradiente-aura: linear-gradient(135deg, #7c3aed 0%, #2563eb 52%, #06b6d4 100%);
+
+  /* Tipografia */
+  --font-titulo: "Sora", system-ui, sans-serif;
+  --font-sub: "Poppins", system-ui, sans-serif;
+  --font-corpo: "Inter", system-ui, sans-serif;
+
+  /* Ritmo */
+  --container: 1200px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --section-y: clamp(5.5rem, 12vw, 10rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100svh;
+  font-family: var(--font-corpo);
+  background: var(--preto);
+  color: var(--ink-soft);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar discreta, coerente com o dark mode obrigatório */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::selection {
+  background: rgba(6, 182, 212, 0.28);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
+}
